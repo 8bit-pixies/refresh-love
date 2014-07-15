@@ -1,16 +1,28 @@
-# Functions
+function loadMap()
+  Tileset = love.graphics.newImage('countryside.png')
 
-We can clean up our script by splitting up information into various functions. For example, the previous file can be rewritten as:
+  TileW, TileH = 32,32
 
-```
-function loadMap(quadInfo, tileString)
+  local quadInfo = {
+    {'.', 0, 0},  -- grass
+    {'#', 32, 0}, -- box
+    {'*', 0, 32}, -- flowers
+    {'^',32, 32}  -- boxtop
+  }
+
+  local tileString = [[
+...
+.#*.
+...
+]]
+
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   Quads = {}
   for _, info in ipairs(quadInfo) do
     -- info[1] = char, info[2] = x, info[3] = y
     Quads[info[1]] = love.graphics.newQuad(info[2], info[3], TileW, TileH, tilesetW, tilesetH)
   end
-
+  
   TileTable = {}
   local width = #(tileString:match("[^\n]+"))
   for x=1,width,1 do TileTable[x] = {} end -- initilaise correct dim
@@ -34,30 +46,3 @@ function drawMap()
     end
   end
 end
-
-function love.load()
-  Tileset = love.graphics.newImage('countryside.png')
-
-  TileW, TileH = 32,32
-
-  local quadInfo = {
-    {'.', 0, 0},  -- grass
-    {'#', 32, 0}, -- box
-    {'*', 0, 32}, -- flowers
-    {'^',32, 32}  -- boxtop
-  }
-
-  local tileString = [[
-...
-.#*.
-...
-]]
-
-  loadMap(quadInfo, tileString)
-end
-
-function love.draw()
-  drawMap()
-end
-
-```

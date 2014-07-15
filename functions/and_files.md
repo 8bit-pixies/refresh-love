@@ -1,9 +1,43 @@
-# Functions
+# ...and files
 
-We can clean up our script by splitting up information into various functions. For example, the previous file can be rewritten as:
+We can also make it even cleaner by splitting it up into different files.
+
+`main.lua`:
 
 ```
-function loadMap(quadInfo, tileString)
+-- main.lua
+require 'helper'
+
+function love.load()
+  loadMap()
+end
+
+function love.draw()
+  drawMap()
+end
+```
+
+`helper.lua`:
+
+```
+function loadMap()
+  Tileset = love.graphics.newImage('countryside.png')
+
+  TileW, TileH = 32,32
+
+  local quadInfo = {
+    {'.', 0, 0},  -- grass
+    {'#', 32, 0}, -- box
+    {'*', 0, 32}, -- flowers
+    {'^',32, 32}  -- boxtop
+  }
+
+  local tileString = [[
+...
+.#*.
+...
+]]
+
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   Quads = {}
   for _, info in ipairs(quadInfo) do
@@ -34,30 +68,6 @@ function drawMap()
     end
   end
 end
-
-function love.load()
-  Tileset = love.graphics.newImage('countryside.png')
-
-  TileW, TileH = 32,32
-
-  local quadInfo = {
-    {'.', 0, 0},  -- grass
-    {'#', 32, 0}, -- box
-    {'*', 0, 32}, -- flowers
-    {'^',32, 32}  -- boxtop
-  }
-
-  local tileString = [[
-...
-.#*.
-...
-]]
-
-  loadMap(quadInfo, tileString)
-end
-
-function love.draw()
-  drawMap()
-end
-
 ```
+
+We can see the use of the `require` function which allows us to to use the similar functionality of `import` in `python`.

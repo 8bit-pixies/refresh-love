@@ -7,4 +7,5 @@
    * [...with loops](images/imageswith_loops.md)
    * [...with strings](images/with_strings.md)
 * [Functions](functions/README.md)
+   * [...and files](functions/and_files.md)
 
