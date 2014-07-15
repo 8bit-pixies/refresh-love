@@ -1,9 +1,10 @@
 CACHE MANIFEST
-# Revision 1403689074455
+# Revision 1405417200098
 
 CACHE:
 index.html
 functions/README.html
+functions/and_files.html
 hello_world/README.html
 images/README.html
 images/imageswith_loops.html

@@ -17,6 +17,8 @@
     
     
     
+    <link rel="next" href="../functions/and_files.html" />
+    
     
     <link rel="prev" href="../images/with_strings.html" />
     
@@ -30,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5" data-basepath=".." data-revision="1403689074454">
+    <div class="book"  data-level="5" data-basepath=".." data-revision="1405417200097">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -174,6 +176,21 @@
             </a>
             
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="functions/and_files.html">
+            
+            <a href="../functions/and_files.html">
+                <i class="fa fa-check"></i> <b>5.1.</b> ...and files
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
 
@@ -192,35 +209,94 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 100%;min-width: 85.71428571428571%;"></div>
+        <div class="inner" style="width: 87.5%;min-width: 75%;"></div>
     </div>
     <div class="chapters">
     
         <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
     
-        <a href="../hello_world/README.html" title="Hello World" class="chapter done new-chapter" data-progress="1" style="left: 14.285714285714286%;"></a>
+        <a href="../hello_world/README.html" title="Hello World" class="chapter done new-chapter" data-progress="1" style="left: 12.5%;"></a>
     
-        <a href="../table/README.html" title="Table" class="chapter done new-chapter" data-progress="2" style="left: 28.571428571428573%;"></a>
+        <a href="../table/README.html" title="Table" class="chapter done new-chapter" data-progress="2" style="left: 25%;"></a>
     
-        <a href="../loops/README.html" title="Loops" class="chapter done new-chapter" data-progress="3" style="left: 42.857142857142854%;"></a>
+        <a href="../loops/README.html" title="Loops" class="chapter done new-chapter" data-progress="3" style="left: 37.5%;"></a>
     
-        <a href="../images/README.html" title="Images" class="chapter done new-chapter" data-progress="4" style="left: 57.142857142857146%;"></a>
+        <a href="../images/README.html" title="Images" class="chapter done new-chapter" data-progress="4" style="left: 50%;"></a>
     
-        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter done " data-progress="4.1" style="left: 71.42857142857143%;"></a>
+        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter done " data-progress="4.1" style="left: 62.5%;"></a>
     
-        <a href="../images/with_strings.html" title="...with strings" class="chapter done " data-progress="4.2" style="left: 85.71428571428571%;"></a>
+        <a href="../images/with_strings.html" title="...with strings" class="chapter done " data-progress="4.2" style="left: 75%;"></a>
     
-        <a href="../functions/README.html" title="Functions" class="chapter done new-chapter" data-progress="5" style="left: 100%;"></a>
+        <a href="../functions/README.html" title="Functions" class="chapter done new-chapter" data-progress="5" style="left: 87.5%;"></a>
+    
+        <a href="../functions/and_files.html" title="...and files" class="chapter  " data-progress="5.1" style="left: 100%;"></a>
     
     </div>
 </div>
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_4">
+                    <section class="normal" id="section-gitbook_16">
                     
                         <h1 id="functions">Functions</h1>
+<p>We can clean up our script by splitting up information into various functions. For example, the previous file can be rewritten as:</p>
+<pre><code>function loadMap(quadInfo, tileString)
+  local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
+  Quads = {}
+  for _, info in ipairs(quadInfo) do
+    -- info[1] = char, info[2] = x, info[3] = y
+    Quads[info[1]] = love.graphics.newQuad(info[2], info[3], TileW, TileH, tilesetW, tilesetH)
+  end
 
+  TileTable = {}
+  local width = #(tileString:match(&quot;[^\n]+&quot;))
+  for x=1,width,1 do TileTable[x] = {} end -- initilaise correct dim
+
+  local rowIndex, columnIndex = 1,1
+  for row in tileString:gmatch(&quot;[^\n]+&quot;) do
+    columnIndex = 1
+    for chr in row:gmatch(&quot;.&quot;) do
+      TileTable[rowIndex][columnIndex] = chr
+      columnIndex = columnIndex + 1
+    end
+    rowIndex = rowIndex+1
+  end
+end
+
+function drawMap()
+  for rowIndex, row in ipairs(TileTable) do
+    for colIndex, chr in ipairs(row) do
+      local x,y = 250+(colIndex-1)*TileW, 250+(rowIndex-1)*TileH
+      love.graphics.draw(Tileset, Quads[chr], x,y)
+    end
+  end
+end
+
+function love.load()
+  Tileset = love.graphics.newImage(&#39;countryside.png&#39;)
+
+  TileW, TileH = 32,32
+
+  local quadInfo = {
+    {&#39;.&#39;, 0, 0},  -- grass
+    {&#39;#&#39;, 32, 0}, -- box
+    {&#39;*&#39;, 0, 32}, -- flowers
+    {&#39;^&#39;,32, 32}  -- boxtop
+  }
+
+  local tileString = [[
+...
+.#*.
+...
+]]
+
+  loadMap(quadInfo, tileString)
+end
+
+function love.draw()
+  drawMap()
+end
+</code></pre>
                     
                     </section>
                 
@@ -229,8 +305,10 @@
         </div>
 
         
-        <a href="../images/with_strings.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ...with strings"><i class="fa fa-angle-left"></i></a>
+        <a href="../images/with_strings.html" class="navigation navigation-prev " aria-label="Previous page: ...with strings"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../functions/and_files.html" class="navigation navigation-next " aria-label="Next page: ...and files"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
