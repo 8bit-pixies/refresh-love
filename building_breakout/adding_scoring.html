@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Table | Refresh Love</title>
+        <title>Adding Scoring | Refresh Love</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../loops/README.html" />
+    <link rel="next" href="../reacting_to_the_mouse/README.html" />
     
     
-    <link rel="prev" href="../hello_world/README.html" />
+    <link rel="prev" href="../building_breakout/collision.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="2" data-basepath=".." data-revision="1405482146780">
+    <div class="book"  data-level="7.2" data-basepath=".." data-revision="1405482146780">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -275,7 +275,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 14.285714285714286%;min-width: 7.142857142857143%;"></div>
+        <div class="inner" style="width: 92.85714285714286%;min-width: 85.71428571428571%;"></div>
     </div>
     <div class="chapters">
     
@@ -285,27 +285,27 @@
     
         <a href="../table/README.html" title="Table" class="chapter done new-chapter" data-progress="2" style="left: 14.285714285714286%;"></a>
     
-        <a href="../loops/README.html" title="Loops" class="chapter  new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
+        <a href="../loops/README.html" title="Loops" class="chapter done new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
     
-        <a href="../images/README.html" title="Images" class="chapter  new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
+        <a href="../images/README.html" title="Images" class="chapter done new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
     
-        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter  " data-progress="4.1" style="left: 35.714285714285715%;"></a>
+        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter done " data-progress="4.1" style="left: 35.714285714285715%;"></a>
     
-        <a href="../images/with_strings.html" title="...with strings" class="chapter  " data-progress="4.2" style="left: 42.857142857142854%;"></a>
+        <a href="../images/with_strings.html" title="...with strings" class="chapter done " data-progress="4.2" style="left: 42.857142857142854%;"></a>
     
-        <a href="../functions/README.html" title="Functions" class="chapter  new-chapter" data-progress="5" style="left: 50%;"></a>
+        <a href="../functions/README.html" title="Functions" class="chapter done new-chapter" data-progress="5" style="left: 50%;"></a>
     
-        <a href="../functions/and_files.html" title="...and files" class="chapter  " data-progress="5.1" style="left: 57.142857142857146%;"></a>
+        <a href="../functions/and_files.html" title="...and files" class="chapter done " data-progress="5.1" style="left: 57.142857142857146%;"></a>
     
-        <a href="../building_pong/README.html" title="Building Pong" class="chapter  new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
+        <a href="../building_pong/README.html" title="Building Pong" class="chapter done new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
     
-        <a href="../building_pong/adding_one_player.html" title="Adding one player" class="chapter  " data-progress="6.1" style="left: 71.42857142857143%;"></a>
+        <a href="../building_pong/adding_one_player.html" title="Adding one player" class="chapter done " data-progress="6.1" style="left: 71.42857142857143%;"></a>
     
-        <a href="../building_breakout/README.html" title="Building Breakout" class="chapter  new-chapter" data-progress="7" style="left: 78.57142857142857%;"></a>
+        <a href="../building_breakout/README.html" title="Building Breakout" class="chapter done new-chapter" data-progress="7" style="left: 78.57142857142857%;"></a>
     
-        <a href="../building_breakout/collision.html" title="Collision" class="chapter  " data-progress="7.1" style="left: 85.71428571428571%;"></a>
+        <a href="../building_breakout/collision.html" title="Collision" class="chapter done " data-progress="7.1" style="left: 85.71428571428571%;"></a>
     
-        <a href="../building_breakout/adding_scoring.html" title="Adding Scoring" class="chapter  " data-progress="7.2" style="left: 92.85714285714286%;"></a>
+        <a href="../building_breakout/adding_scoring.html" title="Adding Scoring" class="chapter done " data-progress="7.2" style="left: 92.85714285714286%;"></a>
     
         <a href="../reacting_to_the_mouse/README.html" title="Reacting to the mouse" class="chapter  new-chapter" data-progress="8" style="left: 100%;"></a>
     
@@ -314,36 +314,9 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_462">
+                    <section class="normal" id="section-gitbook_452">
                     
-                        <h1 id="table">Table</h1>
-<p>Tables in <code>lua</code> are similar to arrays in <code>python</code>.</p>
-<p><code>main.lua</code>:</p>
-<pre><code>function love.load()
-  GlobalTable = {}
-  GlobalTable[1] = &quot;Chapman&quot;
-  GlobalTable[2] = &quot;Siu&quot;
-  GlobalTable[3] = {1, 2}
-end
-
-function love.draw()
-  love.graphics.print(GlobalTable[1], 200,200)
-  love.graphics.print(GlobalTable[2], 200,220)
-  love.graphics.print(GlobalTable[3][1], 250,220)
-  love.graphics.print(GlobalTable[3][2], 260,220)
-end
-</code></pre><h2 id="creating-an-empty-table">Creating an empty table</h2>
-<p><code>{}</code> denote an empty table.</p>
-<pre><code>GlobalTable = {}
-</code></pre><p>This line declares a global variable which is an empty table.</p>
-<h2 id="creating-a-few-elements">Creating a few elements</h2>
-<pre><code>GlobalTable[1] = &quot;Chapman&quot;
-GlobalTable[2] = &quot;Siu&quot;
-</code></pre><p>Keeping in mind that in <code>lua</code>, the indices begin at 1 and not 0, we can easily initalise elements as above.</p>
-<h2 id="subtables">Subtables</h2>
-<p>You can even create subtables in the logical way:</p>
-<pre><code>GlobalTable[3] = {1, 2}
-</code></pre><p>This will create a subtable at the index 3, which is the table <code>{1,2}</code>.</p>
+                        <h1 id="adding-scoring">Adding Scoring</h1>
 
                     
                     </section>
@@ -353,10 +326,10 @@ GlobalTable[2] = &quot;Siu&quot;
         </div>
 
         
-        <a href="../hello_world/README.html" class="navigation navigation-prev " aria-label="Previous page: Hello World"><i class="fa fa-angle-left"></i></a>
+        <a href="../building_breakout/collision.html" class="navigation navigation-prev " aria-label="Previous page: Collision"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../loops/README.html" class="navigation navigation-next " aria-label="Next page: Loops"><i class="fa fa-angle-right"></i></a>
+        <a href="../reacting_to_the_mouse/README.html" class="navigation navigation-next " aria-label="Next page: Reacting to the mouse"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

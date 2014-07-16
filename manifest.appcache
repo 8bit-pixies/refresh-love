@@ -1,8 +1,13 @@
 CACHE MANIFEST
-# Revision 1405417200098
+# Revision 1405482146781
 
 CACHE:
+building_pong/README.html
+building_pong/adding_one_player.html
 index.html
+building_breakout/README.html
+building_breakout/adding_scoring.html
+building_breakout/collision.html
 functions/README.html
 functions/and_files.html
 hello_world/README.html
@@ -10,6 +15,7 @@ images/README.html
 images/imageswith_loops.html
 images/with_strings.html
 loops/README.html
+reacting_to_the_mouse/README.html
 table/README.html
 gitbook\app.js
 gitbook\fonts\fontawesome\FontAwesome.otf

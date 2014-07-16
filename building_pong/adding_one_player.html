@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Table | Refresh Love</title>
+        <title>Adding one player | Refresh Love</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../loops/README.html" />
+    <link rel="next" href="../building_breakout/README.html" />
     
     
-    <link rel="prev" href="../hello_world/README.html" />
+    <link rel="prev" href="../building_pong/README.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="2" data-basepath=".." data-revision="1405482146780">
+    <div class="book"  data-level="6.1" data-basepath=".." data-revision="1405482146780">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -275,7 +275,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 14.285714285714286%;min-width: 7.142857142857143%;"></div>
+        <div class="inner" style="width: 71.42857142857143%;min-width: 64.28571428571429%;"></div>
     </div>
     <div class="chapters">
     
@@ -285,21 +285,21 @@
     
         <a href="../table/README.html" title="Table" class="chapter done new-chapter" data-progress="2" style="left: 14.285714285714286%;"></a>
     
-        <a href="../loops/README.html" title="Loops" class="chapter  new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
+        <a href="../loops/README.html" title="Loops" class="chapter done new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
     
-        <a href="../images/README.html" title="Images" class="chapter  new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
+        <a href="../images/README.html" title="Images" class="chapter done new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
     
-        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter  " data-progress="4.1" style="left: 35.714285714285715%;"></a>
+        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter done " data-progress="4.1" style="left: 35.714285714285715%;"></a>
     
-        <a href="../images/with_strings.html" title="...with strings" class="chapter  " data-progress="4.2" style="left: 42.857142857142854%;"></a>
+        <a href="../images/with_strings.html" title="...with strings" class="chapter done " data-progress="4.2" style="left: 42.857142857142854%;"></a>
     
-        <a href="../functions/README.html" title="Functions" class="chapter  new-chapter" data-progress="5" style="left: 50%;"></a>
+        <a href="../functions/README.html" title="Functions" class="chapter done new-chapter" data-progress="5" style="left: 50%;"></a>
     
-        <a href="../functions/and_files.html" title="...and files" class="chapter  " data-progress="5.1" style="left: 57.142857142857146%;"></a>
+        <a href="../functions/and_files.html" title="...and files" class="chapter done " data-progress="5.1" style="left: 57.142857142857146%;"></a>
     
-        <a href="../building_pong/README.html" title="Building Pong" class="chapter  new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
+        <a href="../building_pong/README.html" title="Building Pong" class="chapter done new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
     
-        <a href="../building_pong/adding_one_player.html" title="Adding one player" class="chapter  " data-progress="6.1" style="left: 71.42857142857143%;"></a>
+        <a href="../building_pong/adding_one_player.html" title="Adding one player" class="chapter done " data-progress="6.1" style="left: 71.42857142857143%;"></a>
     
         <a href="../building_breakout/README.html" title="Building Breakout" class="chapter  new-chapter" data-progress="7" style="left: 78.57142857142857%;"></a>
     
@@ -314,36 +314,69 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_462">
+                    <section class="normal" id="section-gitbook_449">
                     
-                        <h1 id="table">Table</h1>
-<p>Tables in <code>lua</code> are similar to arrays in <code>python</code>.</p>
-<p><code>main.lua</code>:</p>
-<pre><code>function love.load()
-  GlobalTable = {}
-  GlobalTable[1] = &quot;Chapman&quot;
-  GlobalTable[2] = &quot;Siu&quot;
-  GlobalTable[3] = {1, 2}
+                        <h1 id="adding-one-player">Adding one player</h1>
+<pre><code>--  the goal of this is make a &quot;1 player pong&quot;
+local speed = 5
+local ball = { x = 0, y = 0, vx = -speed, vy = speed}
+local paddle = 0
+
+function movePaddle()
+    if love.keyboard.isDown(&quot;up&quot;) then
+        return -7
+    elseif love.keyboard.isDown(&quot;down&quot;) then
+        return 7
+    else
+        return 0
+    end
+end
+
+function love.update()
+    paddle = paddle + movePaddle()
+
+    -- make sure the paddle doesn&#39;t fly off the screen
+    if paddle &lt; -250 then paddle = -250 end
+    if paddle &gt; 250 then paddle = 250 end
+
+    ball.x = ball.x + ball.vx
+    ball.y = ball.y + ball.vy
+
+    -- check the walls
+    if math.abs(ball.x) &gt;= 385 then ball.vx = -ball.vx end
+    if math.abs(ball.y) &gt;= 285 then ball.vy = -ball.vy end
+
+    -- check if you bit the paddle
+    if ball.x &gt; 325 and ball.x &lt; 350 and math.abs(paddle - ball.y) &lt; 60 then
+        speed = speed + 0.5
+        ball.x = 325
+        ball.vx = -speed
+        ball.vy = ball.vy * 0.5 + math.random(-1, 1)
+    end
+
+    -- check it past the paddle
+    if ball.x &gt; 350 then
+        ball.x = -325
+        ball.vx = -ball.vx
+    end
+
 end
 
 function love.draw()
-  love.graphics.print(GlobalTable[1], 200,200)
-  love.graphics.print(GlobalTable[2], 200,220)
-  love.graphics.print(GlobalTable[3][1], 250,220)
-  love.graphics.print(GlobalTable[3][2], 260,220)
+    love.graphics.translate(400, 300)
+    love.graphics.rectangle(&quot;fill&quot;, 350-10, paddle - 50, 20, 100)
+    love.graphics.circle(&quot;fill&quot;, ball.x, ball.y, 15)
 end
-</code></pre><h2 id="creating-an-empty-table">Creating an empty table</h2>
-<p><code>{}</code> denote an empty table.</p>
-<pre><code>GlobalTable = {}
-</code></pre><p>This line declares a global variable which is an empty table.</p>
-<h2 id="creating-a-few-elements">Creating a few elements</h2>
-<pre><code>GlobalTable[1] = &quot;Chapman&quot;
-GlobalTable[2] = &quot;Siu&quot;
-</code></pre><p>Keeping in mind that in <code>lua</code>, the indices begin at 1 and not 0, we can easily initalise elements as above.</p>
-<h2 id="subtables">Subtables</h2>
-<p>You can even create subtables in the logical way:</p>
-<pre><code>GlobalTable[3] = {1, 2}
-</code></pre><p>This will create a subtable at the index 3, which is the table <code>{1,2}</code>.</p>
+</code></pre><p>To add an extra player, the logic follows. Here we have the information on the paddle (which is one dimensional since it can only exist in one plane.</p>
+<h1 id="-love-keyboard-isdown-"><code>love.keyboard.isDown()</code></h1>
+<p>This function checks whether a key is pressed down, which is what is used in this instance.</p>
+<h1 id="did-it-hit-the-paddle-">Did it hit the paddle?</h1>
+<p>We can check whether we hit the paddle in the similar way to how we checked whether it hit the wall. Firstly we need to see if the ball has reached the paddle:</p>
+<pre><code>if ball.x &gt; 325 and ball.x &lt; 350
+</code></pre><p>Then we need to check if the paddle is in line with the ball</p>
+<pre><code>math.abs(paddle - ball.y) &lt; 60
+</code></pre><p>And thats it! We have made our pong game.</p>
+<p>As an exercise try adding a second player to the game and print the score.</p>
 
                     
                     </section>
@@ -353,10 +386,10 @@ GlobalTable[2] = &quot;Siu&quot;
         </div>
 
         
-        <a href="../hello_world/README.html" class="navigation navigation-prev " aria-label="Previous page: Hello World"><i class="fa fa-angle-left"></i></a>
+        <a href="../building_pong/README.html" class="navigation navigation-prev " aria-label="Previous page: Building Pong"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../loops/README.html" class="navigation navigation-next " aria-label="Next page: Loops"><i class="fa fa-angle-right"></i></a>
+        <a href="../building_breakout/README.html" class="navigation navigation-next " aria-label="Next page: Building Breakout"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
