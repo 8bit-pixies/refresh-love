@@ -1,5 +1,7 @@
 # Building Breakout
 
+<iframe width="420" height="315" src="//www.youtube.com/embed/prhR-ADPig4" frameborder="0" allowfullscreen></iframe>
+
 First thing to do is using our Pong code, is to flip it to be left-right rather than up-down.
 
 ```{.lua}

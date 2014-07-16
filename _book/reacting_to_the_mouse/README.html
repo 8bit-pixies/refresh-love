@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Hello World | Refresh Love</title>
+        <title>Reacting to the mouse | Refresh Love</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,8 @@
     
     
     
-    <link rel="next" href="../table/README.html" />
     
-    
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../building_breakout/adding_scoring.html" />
     
 
         
@@ -32,7 +30,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1405482387880">
+    <div class="book"  data-level="8" data-basepath=".." data-revision="1405482387880">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -275,7 +273,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 7.142857142857143%;min-width: 0%;"></div>
+        <div class="inner" style="width: 100%;min-width: 92.85714285714286%;"></div>
     </div>
     <div class="chapters">
     
@@ -283,67 +281,103 @@
     
         <a href="../hello_world/README.html" title="Hello World" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
     
-        <a href="../table/README.html" title="Table" class="chapter  new-chapter" data-progress="2" style="left: 14.285714285714286%;"></a>
+        <a href="../table/README.html" title="Table" class="chapter done new-chapter" data-progress="2" style="left: 14.285714285714286%;"></a>
     
-        <a href="../loops/README.html" title="Loops" class="chapter  new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
+        <a href="../loops/README.html" title="Loops" class="chapter done new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
     
-        <a href="../images/README.html" title="Images" class="chapter  new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
+        <a href="../images/README.html" title="Images" class="chapter done new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
     
-        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter  " data-progress="4.1" style="left: 35.714285714285715%;"></a>
+        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter done " data-progress="4.1" style="left: 35.714285714285715%;"></a>
     
-        <a href="../images/with_strings.html" title="...with strings" class="chapter  " data-progress="4.2" style="left: 42.857142857142854%;"></a>
+        <a href="../images/with_strings.html" title="...with strings" class="chapter done " data-progress="4.2" style="left: 42.857142857142854%;"></a>
     
-        <a href="../functions/README.html" title="Functions" class="chapter  new-chapter" data-progress="5" style="left: 50%;"></a>
+        <a href="../functions/README.html" title="Functions" class="chapter done new-chapter" data-progress="5" style="left: 50%;"></a>
     
-        <a href="../functions/and_files.html" title="...and files" class="chapter  " data-progress="5.1" style="left: 57.142857142857146%;"></a>
+        <a href="../functions/and_files.html" title="...and files" class="chapter done " data-progress="5.1" style="left: 57.142857142857146%;"></a>
     
-        <a href="../building_pong/README.html" title="Building Pong" class="chapter  new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
+        <a href="../building_pong/README.html" title="Building Pong" class="chapter done new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
     
-        <a href="../building_pong/adding_one_player.html" title="Adding one player" class="chapter  " data-progress="6.1" style="left: 71.42857142857143%;"></a>
+        <a href="../building_pong/adding_one_player.html" title="Adding one player" class="chapter done " data-progress="6.1" style="left: 71.42857142857143%;"></a>
     
-        <a href="../building_breakout/README.html" title="Building Breakout" class="chapter  new-chapter" data-progress="7" style="left: 78.57142857142857%;"></a>
+        <a href="../building_breakout/README.html" title="Building Breakout" class="chapter done new-chapter" data-progress="7" style="left: 78.57142857142857%;"></a>
     
-        <a href="../building_breakout/collision.html" title="Collision" class="chapter  " data-progress="7.1" style="left: 85.71428571428571%;"></a>
+        <a href="../building_breakout/collision.html" title="Collision" class="chapter done " data-progress="7.1" style="left: 85.71428571428571%;"></a>
     
-        <a href="../building_breakout/adding_scoring.html" title="Adding Scoring" class="chapter  " data-progress="7.2" style="left: 92.85714285714286%;"></a>
+        <a href="../building_breakout/adding_scoring.html" title="Adding Scoring" class="chapter done " data-progress="7.2" style="left: 92.85714285714286%;"></a>
     
-        <a href="../reacting_to_the_mouse/README.html" title="Reacting to the mouse" class="chapter  new-chapter" data-progress="8" style="left: 100%;"></a>
+        <a href="../reacting_to_the_mouse/README.html" title="Reacting to the mouse" class="chapter done new-chapter" data-progress="8" style="left: 100%;"></a>
     
     </div>
 </div>
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_490">
+                    <section class="normal" id="section-gitbook_496">
                     
-                        <h1 id="hello-world">Hello World</h1>
-<p>Once <code>LOVE</code> is installed, copy the following example and save it as <code>main.lua</code></p>
-<pre><code class="lang-{.lua}">function love.load()
-  Message = &quot;Hello World!&quot;
-  local secret = &#39;this is a local string&#39;
+                        <h1 id="reacting-to-the-mouse">Reacting to the mouse</h1>
+<pre><code>-- print current mouse location
+function love.update()
+    X, Y = love.mouse.getPosition()
 end
 
 function love.draw()
-  love.graphics.print(Message, 200,200)
+    love.graphics.print(X .. &quot; &quot; .. Y, 0,0)
+end
+</code></pre><p>We can see here that the <code>love.mouse.getPosition()</code> will show you the position. So now lets get it to react to some objects; like on mouse over change colour of the circle.</p>
+<h1 id="changing-colours">Changing colours</h1>
+<pre><code>-- print current mouse location
+local over = false
+
+function setCircleColour()
+    if over then love.graphics.setColor(255, 0, 100)
+    else love.graphics.setColor(0, 255, 255) end
+end
+
+function love.update()
+    X, Y = love.mouse.getPosition()
+
+    -- if X, Y are in the circle then over = true (not strictly correct, due to
+    -- radius)
+    -- mouse coordinates are not translated
+    if math.abs(X-400) &lt;= 100 and math.abs(Y-300) &lt;= 100 then over = true
+    else over = false
+    end
+end
+
+function love.draw()
+    love.graphics.translate(400, 300)
+    setCircleColour()
+    love.graphics.print(X .. &quot; &quot; .. Y, -400,-300)
+    love.graphics.circle(&quot;fill&quot;, 0, 0, 100)
+end
+</code></pre><p>The important things to remember are mouse coordinates are not translated, and to change to colours we have to use <code>love.graphics.setColor</code>.</p>
+<h2 id="-love-mouse-isdown-l-"><code>love.mouse.isDown(&quot;l&quot;)</code></h2>
+<p>We can make the colour change when we click on the circle using <code>love.mouse.isDown(&quot;l&quot;)</code>. So the full <code>main.lua</code> would look like:</p>
+<pre><code>-- print current mouse location
+local over = false
+
+function setCircleColour()
+    if over then love.graphics.setColor(255, 0, 100)
+    else love.graphics.setColor(0, 255, 255) end
+end
+
+function love.update()
+    X, Y = love.mouse.getPosition()
+
+    -- if X, Y are in the rectangle then over = true
+    -- mouse coordinates are not translated
+    if math.abs(X-400) &lt;= 100 and math.abs(Y-300) &lt;= 100 and love.mouse.isDown(&quot;l&quot;) then over = true
+    else over = false
+    end
+end
+
+function love.draw()
+    love.graphics.translate(400, 300)
+    setCircleColour()
+    love.graphics.print((X-400) .. &quot; &quot; .. (Y-400), -400,-300)
+    love.graphics.rectangle(&quot;fill&quot;, -100, -100, 200, 200)
 end
 </code></pre>
-<p>To run this code, simply change to the directory and type</p>
-<pre><code>love .
-</code></pre><p>which will run your game.</p>
-<h2 id="-love-load-"><code>love.load</code></h2>
-<p><code>love.load</code> will run before anything is drawn onto the screen.</p>
-<h2 id="global-variables">Global Variables</h2>
-<pre><code>Message = &quot;Hello World!&quot;
-</code></pre><p>This variable will be available globally not only in this function.</p>
-<h2 id="local-variables">Local Variables</h2>
-<pre><code>local secret = &#39;this is a local string&#39;
-</code></pre><p>This is a variable which can only be used locally in a function.</p>
-<h2 id="-love-draw-"><code>love.draw</code></h2>
-<pre><code>function love.draw()
-</code></pre><p>This is the function is called periodically, and is responsibility putting stuff on the screen.</p>
-<h3 id="-love-graphics-print-"><code>love.graphics.print</code></h3>
-<p>This is an <em>invocation</em>.</p>
-
                     
                     </section>
                 
@@ -352,10 +386,8 @@ end
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../building_breakout/adding_scoring.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Adding Scoring"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../table/README.html" class="navigation navigation-next " aria-label="Next page: Table"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

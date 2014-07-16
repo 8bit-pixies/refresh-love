@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Hello World | Refresh Love</title>
+        <title>Building Pong | Refresh Love</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../table/README.html" />
+    <link rel="next" href="../building_pong/adding_one_player.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../functions/and_files.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1405482387880">
+    <div class="book"  data-level="6" data-basepath=".." data-revision="1405482387880">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -275,7 +275,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 7.142857142857143%;min-width: 0%;"></div>
+        <div class="inner" style="width: 64.28571428571429%;min-width: 57.142857142857146%;"></div>
     </div>
     <div class="chapters">
     
@@ -283,21 +283,21 @@
     
         <a href="../hello_world/README.html" title="Hello World" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
     
-        <a href="../table/README.html" title="Table" class="chapter  new-chapter" data-progress="2" style="left: 14.285714285714286%;"></a>
+        <a href="../table/README.html" title="Table" class="chapter done new-chapter" data-progress="2" style="left: 14.285714285714286%;"></a>
     
-        <a href="../loops/README.html" title="Loops" class="chapter  new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
+        <a href="../loops/README.html" title="Loops" class="chapter done new-chapter" data-progress="3" style="left: 21.428571428571427%;"></a>
     
-        <a href="../images/README.html" title="Images" class="chapter  new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
+        <a href="../images/README.html" title="Images" class="chapter done new-chapter" data-progress="4" style="left: 28.571428571428573%;"></a>
     
-        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter  " data-progress="4.1" style="left: 35.714285714285715%;"></a>
+        <a href="../images/imageswith_loops.html" title="...with loops" class="chapter done " data-progress="4.1" style="left: 35.714285714285715%;"></a>
     
-        <a href="../images/with_strings.html" title="...with strings" class="chapter  " data-progress="4.2" style="left: 42.857142857142854%;"></a>
+        <a href="../images/with_strings.html" title="...with strings" class="chapter done " data-progress="4.2" style="left: 42.857142857142854%;"></a>
     
-        <a href="../functions/README.html" title="Functions" class="chapter  new-chapter" data-progress="5" style="left: 50%;"></a>
+        <a href="../functions/README.html" title="Functions" class="chapter done new-chapter" data-progress="5" style="left: 50%;"></a>
     
-        <a href="../functions/and_files.html" title="...and files" class="chapter  " data-progress="5.1" style="left: 57.142857142857146%;"></a>
+        <a href="../functions/and_files.html" title="...and files" class="chapter done " data-progress="5.1" style="left: 57.142857142857146%;"></a>
     
-        <a href="../building_pong/README.html" title="Building Pong" class="chapter  new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
+        <a href="../building_pong/README.html" title="Building Pong" class="chapter done new-chapter" data-progress="6" style="left: 64.28571428571429%;"></a>
     
         <a href="../building_pong/adding_one_player.html" title="Adding one player" class="chapter  " data-progress="6.1" style="left: 71.42857142857143%;"></a>
     
@@ -314,35 +314,37 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_490">
+                    <section class="normal" id="section-gitbook_483">
                     
-                        <h1 id="hello-world">Hello World</h1>
-<p>Once <code>LOVE</code> is installed, copy the following example and save it as <code>main.lua</code></p>
-<pre><code class="lang-{.lua}">function love.load()
-  Message = &quot;Hello World!&quot;
-  local secret = &#39;this is a local string&#39;
+                        <h1 id="building-pong">Building Pong</h1>
+<p>Now we will try to build pong, but first lets try to simulate a ball bouncing in a box.</p>
+<pre><code class="lang-.lua">local speed = 5
+local ball = { x = 0, y = 0, vx = -speed, vy = speed}
+local paddle = 0
+
+function love.update()
+    ball.x = ball.x + ball.vx
+    ball.y = ball.y + ball.vy
+
+    if math.abs(ball.x) &gt;= 385 then ball.vx = -ball.vx end
+    if math.abs(ball.y) &gt;= 285 then ball.vy = -ball.vy end
+
+
 end
 
 function love.draw()
-  love.graphics.print(Message, 200,200)
+    love.graphics.translate(400, 300)
+    love.graphics.circle(&quot;fill&quot;, ball.x, ball.y, 15)
 end
 </code></pre>
-<p>To run this code, simply change to the directory and type</p>
-<pre><code>love .
-</code></pre><p>which will run your game.</p>
-<h2 id="-love-load-"><code>love.load</code></h2>
-<p><code>love.load</code> will run before anything is drawn onto the screen.</p>
-<h2 id="global-variables">Global Variables</h2>
-<pre><code>Message = &quot;Hello World!&quot;
-</code></pre><p>This variable will be available globally not only in this function.</p>
-<h2 id="local-variables">Local Variables</h2>
-<pre><code>local secret = &#39;this is a local string&#39;
-</code></pre><p>This is a variable which can only be used locally in a function.</p>
-<h2 id="-love-draw-"><code>love.draw</code></h2>
-<pre><code>function love.draw()
-</code></pre><p>This is the function is called periodically, and is responsibility putting stuff on the screen.</p>
-<h3 id="-love-graphics-print-"><code>love.graphics.print</code></h3>
-<p>This is an <em>invocation</em>.</p>
+<p>How does this work?</p>
+<h1 id="-love-graphics-translate-"><code>love.graphics.translate()</code></h1>
+<p>This translate the coordinates system by a factor of 400 (for the x-axis) and 300 (for the y-axis).</p>
+<p>This means that the center of the screen (400, 300) is now the centre of our screen, keeping in mind the dimensions of the window is 800 x 600, unless you have changed the defaults.</p>
+<p>How do we check whether we&#39;ve hit a wall?</p>
+<pre><code>if math.abs(ball.x) &gt;= 385 then ball.vx = -ball.vx end
+if math.abs(ball.y) &gt;= 285 then ball.vy = -ball.vy end
+</code></pre><p>These two lines work that magic, we hit the wall when the edge of our circle hits -400 or 400, in other words, we need to check from the center of the circle offset by the radius (which is 15). Hence absolute value of 385, 285 is the number required.</p>
 
                     
                     </section>
@@ -352,10 +354,10 @@ end
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../functions/and_files.html" class="navigation navigation-prev " aria-label="Previous page: ...and files"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../table/README.html" class="navigation navigation-next " aria-label="Next page: Table"><i class="fa fa-angle-right"></i></a>
+        <a href="../building_pong/adding_one_player.html" class="navigation navigation-next " aria-label="Next page: Adding one player"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
