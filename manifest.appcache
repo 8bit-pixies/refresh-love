@@ -1,12 +1,11 @@
 CACHE MANIFEST
-# Revision 1405482146781
+# Revision 1405688891379
 
 CACHE:
+index.html
 building_pong/README.html
 building_pong/adding_one_player.html
-index.html
 building_breakout/README.html
-building_breakout/adding_scoring.html
 building_breakout/collision.html
 functions/README.html
 functions/and_files.html
