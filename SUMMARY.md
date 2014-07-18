@@ -12,6 +12,5 @@
    * [Adding one player](building_pong/adding_one_player.md)
 * [Building Breakout](building_breakout/README.md)
    * [Collision](building_breakout/collision.md)
-   * [Adding Scoring](building_breakout/adding_scoring.md)
 * [Reacting to the mouse](reacting_to_the_mouse/README.md)
 
